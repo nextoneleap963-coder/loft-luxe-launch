@@ -47,26 +47,26 @@ const Index = () => {
       
       <main className="relative z-10">
         {/* Hero Section */}
-        <section className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-          <div className="w-full max-w-4xl mx-auto text-center space-y-8 animate-fadeIn">
+        <section className="flex flex-col items-center justify-center px-4 py-16 md:py-20">
+          <div className="w-full max-w-4xl mx-auto text-center space-y-6 animate-fadeIn">
             {/* Logo */}
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-4">
               <img 
                 src={logo} 
                 alt="Bespoke Loft logo" 
-                className="h-32 md:h-48 w-auto object-contain"
+                className="h-24 md:h-32 w-auto object-contain"
               />
             </div>
 
             {/* Brand Name */}
-            <h1 className="font-playfair font-bold text-4xl md:text-6xl lg:text-7xl text-foreground tracking-wider">
+            <h1 className="font-playfair font-bold text-3xl md:text-5xl lg:text-6xl text-foreground tracking-wider">
               BESPOKE LOFT
             </h1>
 
             {/* Animated Coming Soon */}
-            <div className="py-8">
+            <div className="py-6">
               <h2 
-                className="font-playfair font-black text-5xl md:text-7xl lg:text-8xl bg-gradient-to-r from-primary via-foreground to-primary bg-[length:200%_auto] bg-clip-text text-transparent motion-safe:animate-shimmer motion-reduce:bg-gradient-to-r motion-reduce:from-primary motion-reduce:to-primary"
+                className="font-playfair font-black text-4xl md:text-6xl lg:text-7xl bg-gradient-to-r from-primary via-foreground to-primary bg-[length:200%_auto] bg-clip-text text-transparent motion-safe:animate-shimmer motion-reduce:bg-gradient-to-r motion-reduce:from-primary motion-reduce:to-primary"
                 aria-label="Coming Soon"
               >
                 Coming Soon
@@ -74,19 +74,19 @@ const Index = () => {
             </div>
 
             {/* Subtext */}
-            <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground font-light tracking-wide max-w-2xl mx-auto">
               Crafted-to-measure elegance is almost here.
             </p>
           </div>
         </section>
 
         {/* Gold Divider */}
-        <div className="w-full flex justify-center px-4 my-16">
+        <div className="w-full flex justify-center px-4 my-8">
           <div className="w-full max-w-xs h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
         </div>
 
         {/* Contact Section */}
-        <section className="px-4 py-16 max-w-4xl mx-auto">
+        <section className="px-4 py-12 max-w-4xl mx-auto">
           <div className="backdrop-blur-xl bg-glass/60 rounded-2xl p-8 md:p-12 shadow-2xl border border-primary/20 animate-fadeIn motion-safe:hover:shadow-primary/30 transition-all duration-500">
             <h3 className="font-playfair font-bold text-3xl md:text-4xl text-foreground mb-10 text-center tracking-wide">
               Get In Touch
@@ -150,7 +150,7 @@ const Index = () => {
         </section>
 
         {/* Notify Form Section */}
-        <section className="px-4 py-20 max-w-lg mx-auto">
+        <section className="px-4 py-12 max-w-lg mx-auto">
           <form onSubmit={handleNotifySubmit} className="space-y-6 animate-fadeIn backdrop-blur-xl bg-glass/40 rounded-2xl p-8 md:p-10 border border-primary/20">
             <div className="text-center space-y-2">
               <h3 className="font-playfair font-bold text-2xl md:text-3xl text-foreground tracking-wide">
@@ -181,7 +181,7 @@ const Index = () => {
         </section>
 
         {/* Footer */}
-        <footer className="px-4 py-16 text-center border-t border-primary/10 mt-20">
+        <footer className="px-4 py-12 text-center border-t border-primary/10 mt-12">
           <p className="text-muted-foreground/80 text-sm font-inter tracking-wide">
             © {new Date().getFullYear()} Bespoke Loft. All Rights Reserved.
           </p>
