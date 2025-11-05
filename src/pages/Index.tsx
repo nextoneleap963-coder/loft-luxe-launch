@@ -87,87 +87,106 @@ const Index = () => {
 
         {/* Contact Section */}
         <section className="px-4 py-16 max-w-4xl mx-auto">
-          <div className="backdrop-blur-lg bg-glass/40 rounded-2xl p-8 md:p-12 shadow-2xl border border-border/50 animate-fadeIn motion-safe:hover:shadow-primary/20 transition-shadow duration-300">
-            <h3 className="font-playfair font-bold text-3xl md:text-4xl text-foreground mb-8 text-center">
-              Contact
+          <div className="backdrop-blur-xl bg-glass/60 rounded-2xl p-8 md:p-12 shadow-2xl border border-primary/20 animate-fadeIn motion-safe:hover:shadow-primary/30 transition-all duration-500">
+            <h3 className="font-playfair font-bold text-3xl md:text-4xl text-foreground mb-10 text-center tracking-wide">
+              Get In Touch
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Address */}
-              <div className="flex items-start gap-4 group">
-                <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-1" aria-hidden="true" />
+              <div className="flex items-start gap-5 group p-4 rounded-xl hover:bg-foreground/5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-6 h-6 text-primary" aria-hidden="true" />
+                </div>
                 <div className="flex-1">
-                  <p className="text-foreground/90 mb-2 leading-relaxed">
+                  <h4 className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Location</h4>
+                  <p className="text-foreground/90 mb-3 leading-relaxed text-base">
                     {address}
                   </p>
                   <a 
                     href={googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors duration-200 font-medium"
+                    className="text-primary hover:text-primary/80 underline underline-offset-4 transition-colors duration-200 font-medium text-sm"
                   >
-                    View map
+                    Open in Google Maps →
                   </a>
                 </div>
               </div>
 
               {/* Email */}
-              <div className="flex items-center gap-4 group">
-                <Mail className="w-6 h-6 text-primary flex-shrink-0" aria-hidden="true" />
-                <a 
-                  href="mailto:info@bespokeloft.in"
-                  className="text-foreground/90 hover:text-primary transition-colors duration-200"
-                >
-                  info@bespokeloft.in
-                </a>
+              <div className="flex items-center gap-5 group p-4 rounded-xl hover:bg-foreground/5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Mail className="w-6 h-6 text-primary" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Email</h4>
+                  <a 
+                    href="mailto:info@bespokeloft.in"
+                    className="text-foreground/90 hover:text-primary transition-colors duration-200 text-base"
+                  >
+                    info@bespokeloft.in
+                  </a>
+                </div>
               </div>
 
               {/* Phone */}
-              <div className="flex items-center gap-4 group">
-                <Phone className="w-6 h-6 text-primary flex-shrink-0" aria-hidden="true" />
-                <a 
-                  href="tel:+919739849430"
-                  className="text-foreground/90 hover:text-primary transition-colors duration-200"
-                >
-                  +91 9739849430
-                </a>
+              <div className="flex items-center gap-5 group p-4 rounded-xl hover:bg-foreground/5 transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <Phone className="w-6 h-6 text-primary" aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-primary font-semibold mb-2 uppercase tracking-wider text-sm">Phone</h4>
+                  <a 
+                    href="tel:+919739849430"
+                    className="text-foreground/90 hover:text-primary transition-colors duration-200 text-base"
+                  >
+                    +91 9739 849 430
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Notify Form Section */}
-        <section className="px-4 py-16 max-w-md mx-auto">
-          <form onSubmit={handleNotifySubmit} className="space-y-4 animate-fadeIn">
-            <h3 className="font-playfair font-bold text-2xl md:text-3xl text-foreground text-center mb-6">
-              Be the First to Know
-            </h3>
+        <section className="px-4 py-20 max-w-lg mx-auto">
+          <form onSubmit={handleNotifySubmit} className="space-y-6 animate-fadeIn backdrop-blur-xl bg-glass/40 rounded-2xl p-8 md:p-10 border border-primary/20">
+            <div className="text-center space-y-2">
+              <h3 className="font-playfair font-bold text-2xl md:text-3xl text-foreground tracking-wide">
+                Stay Updated
+              </h3>
+              <p className="text-muted-foreground text-sm">Be notified when we launch our exclusive collection</p>
+            </div>
             
             <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder="your.email@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="flex-1 bg-glass/60 border-border/50 text-foreground placeholder:text-muted-foreground focus:ring-primary focus:border-primary h-12 px-4 rounded-xl"
+                className="flex-1 bg-foreground/5 border-primary/30 text-foreground placeholder:text-muted-foreground/60 focus:ring-2 focus:ring-primary focus:border-primary h-14 px-5 rounded-xl backdrop-blur-sm font-inter"
                 aria-label="Email address"
               />
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 px-8 rounded-xl motion-safe:hover:scale-105 transition-all duration-200 motion-safe:hover:shadow-lg motion-safe:hover:shadow-primary/50"
+                className="bg-primary hover:bg-primary/90 text-dark font-semibold h-14 px-10 rounded-xl motion-safe:hover:scale-[1.02] transition-all duration-300 motion-safe:hover:shadow-2xl motion-safe:hover:shadow-primary/50 uppercase tracking-wide"
               >
-                {isSubmitting ? "Submitting..." : "Notify Me"}
+                {isSubmitting ? "Sending..." : "Notify Me"}
               </Button>
             </div>
           </form>
         </section>
 
         {/* Footer */}
-        <footer className="px-4 py-12 text-center">
-          <p className="text-muted-foreground text-sm">
-            © {new Date().getFullYear()} Bespoke Loft. All rights reserved.
+        <footer className="px-4 py-16 text-center border-t border-primary/10 mt-20">
+          <p className="text-muted-foreground/80 text-sm font-inter tracking-wide">
+            © {new Date().getFullYear()} Bespoke Loft. All Rights Reserved.
+          </p>
+          <p className="text-muted-foreground/60 text-xs mt-2">
+            Custom Tailors • Bengaluru
           </p>
         </footer>
       </main>
