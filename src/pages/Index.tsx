@@ -58,11 +58,6 @@ const Index = () => {
               />
             </div>
 
-            {/* Brand Name */}
-            <h1 className="font-playfair font-bold text-3xl md:text-5xl lg:text-6xl text-foreground tracking-wider">
-              BESPOKE LOFT
-            </h1>
-
             {/* Animated Coming Soon */}
             <div className="py-6">
               <h2 
