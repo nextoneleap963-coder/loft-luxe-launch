@@ -87,10 +87,9 @@ export const AdminPhotoUpload = ({ onUploadSuccess }: AdminPhotoUploadProps) => 
       setOpen(false);
       resetForm();
       onUploadSuccess?.();
-    } catch (error: any) {
-      console.error("Upload error:", error);
-      if (error.message.includes("row-level security")) {
-        toast.error("You don't have permission to upload photos");
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        toast.error(error.message);
       } else {
         toast.error("Failed to upload photo. Please try again.");
       }

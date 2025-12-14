@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Mail, Phone, MessageSquare, Instagram, Linkedin, Facebook, InstagramIcon, FacebookIcon } from "lucide-react";
+import { MapPin, Mail, Phone, MessageSquare, InstagramIcon, FacebookIcon } from "lucide-react";
 import { toast } from "sonner";
 
 export const ContactSection = () => {
