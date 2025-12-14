@@ -27,8 +27,6 @@ const Auth = () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
           router.push("/admin");
-      } else {
-        router.push("/");
       }
     };
 
@@ -36,8 +34,6 @@ const Auth = () => {
       async (event, session) => {
         if (session?.user) {
           router.push("/admin");
-        }else {
-          router.push("/");
         }
       }
     );
