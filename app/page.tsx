@@ -23,23 +23,54 @@ const Index = () => {
   };
 
   useEffect(() => {
-    // Fetch photos from database
+    // Fetch photos from database with caching
     const fetchPhotos = async () => {
+      const CACHE_KEY = "lookbook_photos_cache";
+      const CACHE_TIMESTAMP_KEY = "lookbook_photos_cache_timestamp";
+      const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes in milliseconds
+
+      // Check if we have cached data
+      const cachedData = sessionStorage.getItem(CACHE_KEY);
+      const cachedTimestamp = sessionStorage.getItem(CACHE_TIMESTAMP_KEY);
+
+      if (cachedData && cachedTimestamp) {
+        const now = Date.now();
+        const cacheAge = now - parseInt(cachedTimestamp, 10);
+
+        // Use cached data if it's still fresh
+        if (cacheAge < CACHE_DURATION) {
+          try {
+            const parsedData = JSON.parse(cachedData);
+            setDbPhotos(parsedData);
+            return;
+          } catch {
+            // If parsing fails, clear cache and fetch fresh data
+            sessionStorage.removeItem(CACHE_KEY);
+            sessionStorage.removeItem(CACHE_TIMESTAMP_KEY);
+          }
+        }
+      }
+
+      // Fetch fresh data from database
       const { data, error } = await supabase
         .from("lookbook_photos")
         .select("*")
         .order("created_at", { ascending: false });
 
       if (!error && data) {
-        setDbPhotos(
-          data.map((photo) => ({
-            image: photo.image_url,
-            category: photo.category,
-            title: photo.title,
-            isFromDB: true,
-            id: photo.id,
-          }))
-        );
+        const mappedPhotos = data.map((photo) => ({
+          image: photo.image_url,
+          category: photo.category,
+          title: photo.title,
+          isFromDB: true,
+          id: photo.id,
+        }));
+
+        setDbPhotos(mappedPhotos);
+
+        // Cache the data
+        sessionStorage.setItem(CACHE_KEY, JSON.stringify(mappedPhotos));
+        sessionStorage.setItem(CACHE_TIMESTAMP_KEY, Date.now().toString());
       }
     };
 

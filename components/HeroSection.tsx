@@ -31,7 +31,7 @@ export const HeroSection = () => {
       <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
         {/* Logo placeholder */}
         <div className="mb-8 animate-fade-up">
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-foreground logo-text-dark mb-2 transition-all duration-300">
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold logo-text-dark mb-2 transition-all duration-300">
             BESPOKE LOFT
           </h1>
           <div className="h-1 w-32 mx-auto bg-primary rounded-full animate-pulse-glow" />
