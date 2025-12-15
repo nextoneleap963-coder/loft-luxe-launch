@@ -257,7 +257,7 @@ export const ContactSection = () => {
 
               <div className="flex gap-4 justify-center pt-6 border-t border-border">
                 <a
-                  href="https://www.instagram.com/bespokeloft/"
+                  href="https://www.instagram.com/bespokeloft_in"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-12 h-12 rounded-xl bg-secondary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 focus-ring hover:scale-110"

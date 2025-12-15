@@ -19,9 +19,9 @@ export const BrandsSection = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
           {(showAllBrands ? brands : brands.slice(0, 6)).map((brand, i) => (
-            <div
+            <button
               key={brand.slug}
-              className="bg-card p-6 rounded-2xl border border-border hover:border-primary hover:shadow-primary-soft transition-all duration-300 card-tilt animate-fade-up cursor-pointer group"
+              className="bg-card p-6 rounded-2xl border border-border hover:border-primary hover:shadow-primary-soft active:border-primary active:shadow-primary-soft transition-all duration-300 card-tilt animate-fade-up cursor-pointer group"
               style={{ animationDelay: `${i * 40}ms` }}>
               <div className="w-full h-20 rounded-xl bg-white flex items-center justify-center mb-4 group-hover:shadow-md transition-all overflow-hidden p-3">
                 {brand.logo ? (
@@ -34,7 +34,7 @@ export const BrandsSection = () => {
                 {brand.name}
               </h3>
               <p className="text-sm text-muted-foreground">{brand.blurb}</p>
-            </div>
+            </button>
           ))}
         </div>
 

@@ -34,7 +34,7 @@ export const AboutSection = () => {
               <h3 className="font-heading text-xl mb-4 text-primary">Premium Materials</h3>
               <p className="text-muted-foreground">
                 Fabrics imported directly from Italy and the UK, from heritage mills with over 350 years of textile
-                history. All components threads, buttons, linings, canvases sourced from leading manufacturers in
+                history. All components threads, buttons, linings, canvases are sourced from leading manufacturers in
                 Germany, Italy, and the UK.
               </p>
             </div>

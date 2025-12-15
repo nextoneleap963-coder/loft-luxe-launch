@@ -27,7 +27,7 @@ export const WorkWithUsSection = ({ onOpenReferralModal }: WorkWithUsSectionProp
             </div>
             <h3 className="font-heading text-2xl mb-4 text-foreground">Refer a Tailor</h3>
             <p className="text-muted-foreground mb-6">
-              Know a skilled tailor looking for an opportunity? Help us grow our team while earning referral rewards.
+              Know a skilled tailor looking for an opportunity? Help us grow our team.
               We value craftsmen who take pride in their work.
             </p>
             <Button className="w-full" onClick={() => onOpenReferralModal("tailor")}>
