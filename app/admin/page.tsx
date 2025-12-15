@@ -20,6 +20,16 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { Edit, Trash2, ArrowLeft, Loader2 } from "lucide-react";
 import type { GalleryItem } from "@/components/types";
@@ -37,6 +47,8 @@ const AdminPage = () => {
   const [editCategory, setEditCategory] = useState("");
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
+  const [photoIdToDelete, setPhotoIdToDelete] = useState<string | null>(null);
 
   useEffect(() => {
     if (!authLoading) {
@@ -123,21 +135,25 @@ const AdminPage = () => {
     }
   };
 
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this photo?")) {
-      return;
-    }
+  const handleDeleteClick = (id: string) => {
+    setPhotoIdToDelete(id);
+    setDeleteConfirmOpen(true);
+  };
 
-    setDeletingId(id);
+  const handleDelete = async () => {
+    if (!photoIdToDelete) return;
+
+    setDeletingId(photoIdToDelete);
+    setDeleteConfirmOpen(false);
     try {
       // Get the photo to extract the image URL for storage deletion
-      const photo = photos.find((p) => p.id === id);
+      const photo = photos.find((p) => p.id === photoIdToDelete);
       
       // Delete from database
       const { error: deleteError } = await supabase
         .from("lookbook_photos")
         .delete()
-        .eq("id", id);
+        .eq("id", photoIdToDelete);
 
       if (deleteError) throw deleteError;
 
@@ -167,6 +183,7 @@ const AdminPage = () => {
       }
     } finally {
       setDeletingId(null);
+      setPhotoIdToDelete(null);
     }
   };
 
@@ -241,7 +258,8 @@ const AdminPage = () => {
                   alt={photo.title}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Mobile: Always visible overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/20 to-transparent opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <div className="text-xs uppercase tracking-wider text-background mb-1">
                       {photo.category}
@@ -262,7 +280,7 @@ const AdminPage = () => {
                       <Button
                         size="sm"
                         variant="destructive"
-                        onClick={() => photo.id && handleDelete(photo.id)}
+                        onClick={() => photo.id && handleDeleteClick(photo.id)}
                         disabled={deletingId === photo.id}
                         className="flex-1"
                       >
@@ -343,6 +361,27 @@ const AdminPage = () => {
             </div>
           </DialogContent>
         </Dialog>
+
+        {/* Delete Confirmation Dialog */}
+        <AlertDialog open={deleteConfirmOpen} onOpenChange={setDeleteConfirmOpen}>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+              <AlertDialogDescription>
+                This action cannot be undone. This will permanently delete the photo from your gallery.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel onClick={() => setPhotoIdToDelete(null)}>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={handleDelete}
+                className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+              >
+                Delete
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
     </div>
   );

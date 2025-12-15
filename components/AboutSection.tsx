@@ -18,7 +18,7 @@ export const AboutSection = () => {
               true custom clothing with sincere service and precise workmanship.
             </p>
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              As a family-owned and family-run business, his three sons — Siraj, Nawaz, and Saddam Mohiuddin — work
+              As a family-owned and family-run business, his three sons Siraj, Nawaz, and Saddam Mohiuddin work
               closely with him, ensuring every decision from fabric selection to final fitting is taken with care and
               responsibility.
             </p>
@@ -34,7 +34,7 @@ export const AboutSection = () => {
               <h3 className="font-heading text-xl mb-4 text-primary">Premium Materials</h3>
               <p className="text-muted-foreground">
                 Fabrics imported directly from Italy and the UK, from heritage mills with over 350 years of textile
-                history. All components — threads, buttons, linings, canvases — sourced from leading manufacturers in
+                history. All components threads, buttons, linings, canvases sourced from leading manufacturers in
                 Germany, Italy, and the UK.
               </p>
             </div>
@@ -44,14 +44,14 @@ export const AboutSection = () => {
               <p className="text-muted-foreground">
                 Suits, jackets, shirts, trousers, bandhgalas, sherwanis, kurtas, and ceremonial outfits for men.
                 Western formal wear for women. Premium fabrics for connoisseurs and carefully curated mid-segment
-                options — every customer treated with equal importance.
+                options every customer treated with equal importance.
               </p>
             </div>
 
             <div className="bg-card p-6 rounded-2xl border border-border shadow-card card-tilt">
               <h3 className="font-heading text-xl mb-4 text-primary">10,000+ Clients Served</h3>
               <p className="text-muted-foreground">
-                From politics, cinema, media, and corporate leadership to professionals and entrepreneurs — we create
+                From politics, cinema, media, and corporate leadership to professionals and entrepreneurs we create
                 warm, long-term associations, remembering your fit, preferences, and occasions.
               </p>
             </div>
